@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import api from '../Amazon'
+import RankCard from './RankCard';
 const IndexPage = () => {
     // Create state variables
     const [responseData, setResponseData] = useState({result: []})
@@ -23,7 +24,13 @@ const IndexPage = () => {
         <div>
             <button onClick={handleFormSubmit} type='button'>Click Me For Data</button>
             <div id='searches'>
-                 {responseData.result.map((result) => {console.log(result)})}
+                 {responseData.result.map((result) => (
+                    <RankCard 
+                    name={result.product_title}
+                    price={result.product_price}
+                    />
+                
+                ))}
             </div>
         </div>
     )

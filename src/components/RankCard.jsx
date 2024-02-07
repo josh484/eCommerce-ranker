@@ -3,7 +3,8 @@ import React from "react";
 function RankCard(prop){
     return (
         <>
-            <p></p>
+            <p>Name: {prop.name}</p>
+            <p>Price: {prop.price}</p>
         </>
     )
 }
