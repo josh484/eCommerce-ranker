@@ -13,9 +13,8 @@ function App() {
     <>
       <Router>
       <NavigationBar /> {}
-        <Home />
         <Routes>
-          <Route path="/react-portfolio/" element={<Home />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </Router>
     </>
