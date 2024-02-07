@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, }  from 'react-router-dom';
 import './App.css'
 import Home from './components/Home'
 import NavigationBar from './components/NavigationBar'; 
+import Contact from './components/Contact'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -16,6 +17,7 @@ function App() {
         <Home />
         <Routes>
           <Route path="/react-portfolio/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Router>
     </>
