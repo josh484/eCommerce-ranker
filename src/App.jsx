@@ -4,6 +4,7 @@ import './App.css'
 import Home from './components/Home'
 import NavigationBar from './components/NavigationBar'; 
 import Contact from './components/Contact'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -13,10 +14,10 @@ function App() {
   return (
     <>
       <Router>
-      <NavigationBar /> {}
-        <Home />
+      <NavigationBar /> 
+      <SearchBar />
         <Routes>
-          <Route path="/react-portfolio/" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Router>
@@ -25,4 +26,3 @@ function App() {
 }
 
 export default App
-
