@@ -9,7 +9,6 @@ import axios from "axios";
           query: 'Phone',
           page: '1',
           country: 'GB',
-          sort_by: 'LOWEST_PRICE',
           category_id: 'aps'
         },
         headers: {

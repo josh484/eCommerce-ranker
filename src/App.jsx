@@ -15,7 +15,6 @@ function App() {
       <Router>
       <NavigationBar />
         <div className="container">
-          <SearchBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
