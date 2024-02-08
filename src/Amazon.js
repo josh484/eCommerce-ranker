@@ -12,7 +12,7 @@ import axios from "axios";
           category_id: 'aps'
         },
         headers: {
-          'X-RapidAPI-Key': 'e836cf5203msh52715a7d81a978ap1eb4a7jsne7d2dd82308e',
+          'X-RapidAPI-Key': 'a4a9148c55mshd51a0247b343d9ep18b62ejsn9b26d87bdecb',
           'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
         }
     })
