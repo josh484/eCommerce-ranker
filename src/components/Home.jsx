@@ -1,12 +1,12 @@
 import React from 'react';
 import Ranker from './Ranker'
-import SearchBar from './components/SearchBar';
+import SearchBar from './SearchBar';
 function Home() {
 
 
     return (
         <>
-            <h1>Hello World</h1>
+            <h1>Hello World</h1>        
             <SearchBar />
             <Ranker />
         </>
