@@ -1,6 +1,5 @@
 import React from 'react';
 import Ranker from './Ranker'
-import SearchBar from './SearchBar'; 
 function Home() {
 
 
