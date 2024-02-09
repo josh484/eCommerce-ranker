@@ -7,12 +7,11 @@ export default {
             url: 'https://ebay-average-selling-price.p.rapidapi.com/findCompletedItems',
             headers: {
                 'content-type': 'application/json',
-                'X-RapidAPI-Key': 'a4a9148c55mshd51a0247b343d9ep18b62ejsn9b26d87bdecb',
+                'X-RapidAPI-Key': '033278cf74msh5377774c07ccfa2p1b0dbajsnf0fac9117a09',
                 'X-RapidAPI-Host': 'ebay-average-selling-price.p.rapidapi.com'
             },
             data: {
-                keywords: 'iPhone',
-                excluded_keywords: 'locked cracked case box read LCD',
+                keywords: search,
                 max_search_results: "25",
                 remove_outliers: 'true',
                 site_id: '3',
