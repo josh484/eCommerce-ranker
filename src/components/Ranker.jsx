@@ -7,7 +7,7 @@ const IndexPage = (prop) => {
     // Create state variables
     const [responseData, setResponseData] = useState({ result: [] })
     const [ebayData, setEbayData] = useState({ result: [] })
-    const [arr, setArr] = useState({ result: [] })
+    const [arr, setArr] = useState('')
     const [search, setSearch] = useState('')
     const [decide, setDecide] = useState(true)
     const handleSearch = event => {
@@ -15,17 +15,24 @@ const IndexPage = (prop) => {
 
     };
 
-
+    useEffect(() => {
+        if (arr === '') {
+            
+            setDecide(true);
+        } else {
+            console.log(arr)
+            setDecide(false)
+        }
+      }, [arr]);
 
 
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         const output = await Ebay(search)
-        setArr(await Ebay(search))
-        setDecide(false)
+        const output2 = await Amazon(search)
+        setArr(await { ...output, ...output2})
         
-        console.log(arr)
     };
     if (decide == true) {
         return (
@@ -63,7 +70,7 @@ const IndexPage = (prop) => {
                     </form>
                 </div>
                 
-                {arr.products.map((result) => (
+                {arr.results.map((result) => (
                     <RankCard
                         name={result.title || result.product_title}
                         price={result.sale_price || result.product_price}
