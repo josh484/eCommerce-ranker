@@ -6,9 +6,6 @@ const SearchBar = (prop) => {
     setSearch(event.target.value);
   };
 
-  const click = (event) => {
-    event.preventDefault();
-  }
   return (
     <> 
     <form className="mt-3 mb-3">

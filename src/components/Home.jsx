@@ -14,6 +14,7 @@ function Home() {
                 <p>At E-commerce Ranker, we understand the challenges consumers face when searching for the best deals online. That's why we've developed a powerful application that empowers users like you to take control of your shopping experience.</p>
                 <Ranker />
             </section>
+            
         </div>
     );
 }
