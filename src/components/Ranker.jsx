@@ -5,33 +5,65 @@ import RankCard from './RankCard';
 import Search from './SearchBar'
 const IndexPage = (prop) => {
     // Create state variables
-    const [responseData, setResponseData] = useState({ result: [] })
-    const [ebayData, setEbayData] = useState({ result: [] })
+    const [amazonData, setAmazonData] = useState('')
+    const [ebayData, setEbayData] = useState('')
     const [arr, setArr] = useState('')
+    const [compare, setCompare] = useState('')
     const [search, setSearch] = useState('')
     const [decide, setDecide] = useState(true)
+    const ebayArray = [];
     const handleSearch = event => {
         setSearch(event.target.value);
-
     };
 
     useEffect(() => {
-        if (arr === '') {
-            
+        if (amazonData === '') {
+
             setDecide(true);
         } else {
-            console.log(arr)
-            setDecide(false)
+            handleData();
+            setCompare(search)
+            
         }
-      }, [arr]);
+    }, [amazonData]);
 
+    const handleData = async () =>  {
+        await ebayData.products.map((result) => (
+                ebayArray.push(
+                    {
+                        name: result.title,
+                        price: result.price.value,
+                        image: result.thumbnail,
+                        url: result.url,
+                        website: 'Ebay',
+                    }
+                )
+            )
+        )
+        await amazonData.content.offers.map((result) => (
+            ebayArray.push(
+                {
+                    name: result.name,
+                    price: result.price,
+                    image: result.thumbnail,
+                    url: result.link,
+                    website: 'Amazon',
+                }
+            )
+        )
+    )
+    await setArr(ebayArray);
+    setDecide(false)
+    }
 
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+
         const output = await Ebay(search)
         const output2 = await Amazon(search)
-        setArr(await { ...output, ...output2})
+        setAmazonData(await output2)
+        setEbayData(await output)
         
     };
     if (decide == true) {
@@ -69,15 +101,19 @@ const IndexPage = (prop) => {
                         </div>
                     </form>
                 </div>
+
+                {
                 
-                {arr.results.map((result) => (
+                arr.map((result) => (
                     <RankCard
-                        name={result.title || result.product_title}
-                        price={result.sale_price || result.product_price}
-                        image={result.image_url || result.product_photo}
-                        link={result.link || result.product_url}
+                        name={result.name}
+                        price={result.price}
+                        image={result.image}
+                        link={result.url}
                     />
-                ))}
+                ))
+                
+                }
             </div>
         )
     }
