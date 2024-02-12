@@ -1,0 +1,16 @@
+.rankImage{
+    height: 50%;
+    width: 100%;
+}
+
+.rankCard{
+    height: 30vh;
+    margin: 0.5vh;
+}
+
+.rankText{
+    font-size: 1rem !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

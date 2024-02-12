@@ -3,6 +3,10 @@ import Amazon from '../Amazon'
 import Ebay from '../Ebay'
 import RankCard from './RankCard';
 import Search from './SearchBar'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 const IndexPage = (prop) => {
     // Create state variables
     const [amazonData, setAmazonData] = useState('')
@@ -31,7 +35,7 @@ const IndexPage = (prop) => {
 
     const handleData = async () => {
         await ebayData.products.map((result) => {
-            if (result.price != 0 && result.url !== 'https://ebay.com/itm/123456' ) {
+            if (result.price != 0 && result.url !== 'https://ebay.com/itm/123456') {
                 ebayArray.push(
                     {
                         name: result.title,
@@ -78,10 +82,10 @@ const IndexPage = (prop) => {
     if (decide == true) {
         return (
             <div>
-                <Search 
-                change={handleSearch}
-                search={search}
-                click={handleFormSubmit}
+                <Search
+                    change={handleSearch}
+                    search={search}
+                    click={handleFormSubmit}
                 />
             </div>
         )
@@ -90,24 +94,29 @@ const IndexPage = (prop) => {
     else {
         return (
             <div id='searches'>
-                <Search 
-                change={handleSearch}
-                search={search}
-                click={handleFormSubmit}
+                <Search
+                    change={handleSearch}
+                    search={search}
+                    click={handleFormSubmit}
                 />
-                {
-                    arr.map((result) => (
-                        <RankCard
-                            id={counter++}
-                            key={counter}
-                            name={result.name}
-                            price={result.price}
-                            image={result.image}
-                            link={result.url}
-                        />
-                    ))
+                <Container>
+                    <Row>
+                            {
+                                arr.map((result) => (
+                                    <RankCard
+                                        id={counter++}
+                                        key={counter}
+                                        name={result.name}
+                                        price={result.price}
+                                        image={result.image}
+                                        link={result.url}
+                                        website={result.website}
+                                    />
+                                ))
 
-                }
+                            }
+                    </Row>
+                </Container>
             </div>
         )
     }
