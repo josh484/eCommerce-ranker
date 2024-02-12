@@ -15,7 +15,7 @@ function RankCard(prop) {
                     <Card.Text className="rankText">
                         £{prop.price}
                     </Card.Text>
-                    <Button variant="primary" href={prop.link}>{prop.website}</Button>
+                    <Button variant="primary" href={prop.link} className="rankButton">{prop.website}</Button>
                 </Card.Body>
             </Card>
         </Col>
