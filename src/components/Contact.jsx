@@ -1,10 +1,16 @@
 import React, { useState } from "react";
+import Speech from './Speech'
 function Contact() {
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
     message: "",
   });
+
+  const handleSpeechTextChange = (speechText) => {
+    setFormData({ ...formData, message: speechText });
+  };
+
   const handleChange = (e) => {
     console.log(e);
     setFormData({
@@ -68,6 +74,7 @@ function Contact() {
                 onChange={handleChange}
                 required
               />
+              <Speech onTextChange={handleSpeechTextChange} />
             </div>
             <button type="submit" className="btn btn-primary fs-4">
               Submit
