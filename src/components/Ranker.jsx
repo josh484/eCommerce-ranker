@@ -21,14 +21,16 @@ const IndexPage = (prop) => {
 
             setDecide(true);
         } else {
+            console.log(amazonData)
             handleData();
             setCompare(search)
-            
+
         }
     }, [amazonData]);
 
-    const handleData = async () =>  {
-        await ebayData.products.map((result) => (
+    const handleData = async () => {
+        await ebayData.products.map((result) => {
+            if (result.price != 0 && result.url !== 'https://ebay.com/itm/123456' ) {
                 ebayArray.push(
                     {
                         name: result.title,
@@ -38,22 +40,28 @@ const IndexPage = (prop) => {
                         website: 'Ebay',
                     }
                 )
-            )
+            }
+        }
         )
-        await amazonData.content.offers.map((result) => (
-            ebayArray.push(
-                {
-                    name: result.name,
-                    price: result.price,
-                    image: result.thumbnail,
-                    url: result.link,
-                    website: 'Amazon',
-                }
-            )
+        await amazonData.content.offers.map((result) => {
+            if (result.price != 0) {
+                ebayArray.push(
+                    {
+                        name: result.name,
+                        price: result.price,
+                        image: result.image,
+                        url: result.link,
+                        website: 'Amazon',
+                    }
+                )
+            }
+        }
         )
-    )
-    await setArr(ebayArray);
-    setDecide(false)
+
+        ebayArray.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+
+        await setArr(ebayArray);
+        setDecide(false)
     }
 
 
@@ -64,55 +72,38 @@ const IndexPage = (prop) => {
         const output2 = await Amazon(search)
         setAmazonData(await output2)
         setEbayData(await output)
-        
+
     };
     if (decide == true) {
         return (
-
             <div>
-                <form className="mt-3 mb-3">
-                    <div className="row justify-content-center">
-                        <div className="col-sm-6">
-                            <div className="input-group">
-                                <input type="text" className="form-control" placeholder="Search..." onChange={handleSearch} value={search} />
-                                <button type="submit" className="btn btn-primary" onClick={handleFormSubmit} >Search</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                <Search 
+                change={handleSearch}
+                search={search}
+                click={handleFormSubmit}
+                />
             </div>
-
         )
     }
 
     else {
         return (
-
             <div id='searches'>
-                <div>
-                    <form className="mt-3 mb-3">
-                        <div className="row justify-content-center">
-                            <div className="col-sm-6">
-                                <div className="input-group">
-                                    <input type="text" className="form-control" placeholder="Search..." onChange={handleSearch} value={search} />
-                                    <button type="submit" className="btn btn-primary" onClick={handleFormSubmit} >Search</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
+                <Search 
+                change={handleSearch}
+                search={search}
+                click={handleFormSubmit}
+                />
                 {
-                
-                arr.map((result) => (
-                    <RankCard
-                        name={result.name}
-                        price={result.price}
-                        image={result.image}
-                        link={result.url}
-                    />
-                ))
-                
+                    arr.map((result) => (
+                        <RankCard
+                            name={result.name}
+                            price={result.price}
+                            image={result.image}
+                            link={result.url}
+                        />
+                    ))
+
                 }
             </div>
         )

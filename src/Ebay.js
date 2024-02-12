@@ -7,8 +7,8 @@ const Ebay = async (search) => {
     url: 'https://ebay32.p.rapidapi.com/search/' + search,
     params: {
       page: '1',
-      country: 'germany',
-      country_code: 'de'
+      country: 'United Kingdom',
+      country_code: 'uk'
     },
     headers: {
       'X-RapidAPI-Key': 'e836cf5203msh52715a7d81a978ap1eb4a7jsne7d2dd82308e',

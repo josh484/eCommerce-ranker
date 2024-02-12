@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import Ranker from './Ranker'
 const SearchBar = (prop) => {
-  const [search, setSearch] = useState('')
-  const handleSearch = event => {
-    setSearch(event.target.value);
-  };
 
   return (
     <> 
@@ -12,7 +8,7 @@ const SearchBar = (prop) => {
       <div className="row justify-content-center">
         <div className="col-sm-6">
           <div className="input-group">
-            <input type="text" className="form-control" placeholder="Search..."   onChange={handleSearch} value={search} />
+            <input type="text" className="form-control" placeholder="Search..."   onChange={prop.change} value={prop.search} />
             <button type="submit" className="btn btn-primary" onClick={prop.click} >Search</button>
           </div>
         </div>
