@@ -12,6 +12,7 @@ const IndexPage = (prop) => {
     const [search, setSearch] = useState('')
     const [decide, setDecide] = useState(true)
     const ebayArray = [];
+    let counter = 1;
     const handleSearch = event => {
         setSearch(event.target.value);
     };
@@ -24,7 +25,7 @@ const IndexPage = (prop) => {
             console.log(amazonData)
             handleData();
             setCompare(search)
-
+            counter = 0;
         }
     }, [amazonData]);
 
@@ -97,6 +98,8 @@ const IndexPage = (prop) => {
                 {
                     arr.map((result) => (
                         <RankCard
+                            id={counter++}
+                            key={counter}
                             name={result.name}
                             price={result.price}
                             image={result.image}
