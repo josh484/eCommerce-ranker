@@ -6,6 +6,27 @@ const Speech = ({onTextChange}) => {
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
 
+  const handleStartRecording = async () => {
+    if (!navigator.mediaDevices) {
+      console.error("Media devices not supported");
+      return;
+    }
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorderRef.current = new MediaRecorder(stream);
+      audioChunksRef.current = [];
+
+      mediaRecorderRef.current.ondataavailable = (event) => {
+        audioChunksRef.current.push(event.data);
+      };
+
+      mediaRecorderRef.current.start();
+      setIsRecording(true);
+    } catch (error) {
+      console.error("Error accessing media devices:", error);
+    }
+  };
 
   return (
     <div>
