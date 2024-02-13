@@ -1,0 +1,14 @@
+.product-carousel {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.product-carousel img {
+    width: 100%;
+    height: auto;
+}
+
+.product-carousel h3, .product-carousel p {
+    margin: 10px 0;
+    text-align: center;
+}
