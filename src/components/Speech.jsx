@@ -27,6 +27,31 @@ const Speech = ({onTextChange}) => {
       console.error("Error accessing media devices:", error);
     }
   };
+  const handleStopRecording = () => {
+    if (!mediaRecorderRef.current) {
+      console.warn("MediaRecorder not initialized or already stopped");
+      return;
+    }
+
+    mediaRecorderRef.current.stop();
+    mediaRecorderRef.current.onstop = async () => {
+      const audioBlob = new Blob(audioChunksRef.current, { type: "audio/wav" });
+      const formData = new FormData();
+      formData.append("file", audioBlob);
+
+      try {
+        const response = await axios.post(
+          "http://localhost:5001/convert-speech",
+          formData
+        );
+        onTextChange(response.data.transcript);
+      } catch (error) {
+        console.error("Error sending audio:", error);
+      }
+
+      setIsRecording(false);
+    };
+  };
 
   return (
     <div>
