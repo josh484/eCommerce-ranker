@@ -6,14 +6,31 @@
 .rankCard{
     height: 30vh;
     margin: 0.5vh;
-    --bs-card-bg: #1e1e1e;
+    
 }
-.rankCard:hover{
+
+.Ebay{
+    --bs-card-bg: #E53238
+}
+
+.Amazon{
+    --bs-card-bg: #ff9900;
+}
+
+.Ebay:hover{
     transition: all .4s ease;
     -webkit-transition: all .4s ease;
-    box-shadow: 5px 5px white;
+    box-shadow: 5px 5px #0064D3;
     cursor: pointer;
 }
+
+.Amazon:hover{
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+    box-shadow: 5px 5px #000000;
+    cursor: pointer;
+}
+
 
 .rankText{
     font-size: 1rem !important;
@@ -24,8 +41,8 @@
 }
 
 .rankButton{
-    --bs-btn-bg: #bb86fc !important;
-    --bs-btn-border-color:#bb86fc !important;
+    --bs-btn-bg: #232f3e !important;
+    --bs-btn-border-color:#232f3e !important;
     --bs-btn-hover-color:white !important;
     --bs-btn-hover-bg:#3700B3 !important;
     --bs-btn-hover-border-color:#3700B3 !important;

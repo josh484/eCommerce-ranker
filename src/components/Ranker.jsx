@@ -5,38 +5,35 @@ import RankCard from './RankCard';
 import Search from './SearchBar'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 const IndexPage = (prop) => {
     // Create state variables
     const [amazonData, setAmazonData] = useState('')
     const [ebayData, setEbayData] = useState('')
     const [arr, setArr] = useState('')
-    const [compare, setCompare] = useState('')
     const [search, setSearch] = useState('')
     const [decide, setDecide] = useState(true)
-    const ebayArray = [];
+    const searchArray = [];
     let counter = 1;
     const handleSearch = event => {
         setSearch(event.target.value);
     };
 
+    // use effect, when data in the API is put onto the use state use the function handleData() and reveal the mapped cards.
     useEffect(() => {
         if (amazonData === '') {
-
             setDecide(true);
         } else {
-            console.log(amazonData)
             handleData();
-            setCompare(search)
             counter = 0;
         }
     }, [amazonData]);
 
+    // put both API data into an array as an object with same details
     const handleData = async () => {
         await ebayData.products.map((result) => {
             if (result.price != 0 && result.url !== 'https://ebay.com/itm/123456') {
-                ebayArray.push(
+                searchArray.push(
                     {
                         name: result.title,
                         price: result.price.value,
@@ -50,7 +47,7 @@ const IndexPage = (prop) => {
         )
         await amazonData.content.offers.map((result) => {
             if (result.price != 0) {
-                ebayArray.push(
+                searchArray.push(
                     {
                         name: result.name,
                         price: result.price,
@@ -63,13 +60,13 @@ const IndexPage = (prop) => {
         }
         )
 
-        ebayArray.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        searchArray.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
 
-        await setArr(ebayArray);
+        await setArr(searchArray);
         setDecide(false)
     }
 
-
+    // On Search do
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
@@ -79,6 +76,7 @@ const IndexPage = (prop) => {
         setEbayData(await output)
 
     };
+    // Only on first load of the page.
     if (decide == true) {
         return (
             <div>
@@ -90,7 +88,7 @@ const IndexPage = (prop) => {
             </div>
         )
     }
-
+    // When first search is made
     else {
         return (
             <div id='searches'>
