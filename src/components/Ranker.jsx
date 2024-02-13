@@ -6,6 +6,8 @@ import Search from './SearchBar'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
+
+
 const IndexPage = (prop) => {
     // Create state variables
     const [amazonData, setAmazonData] = useState('')
@@ -15,6 +17,8 @@ const IndexPage = (prop) => {
     const [decide, setDecide] = useState(true)
     const searchArray = [];
     let counter = 1;
+    let [rowChanger, setrowChanger] = useState(true);
+
     const handleSearch = event => {
         setSearch(event.target.value);
     };
@@ -76,6 +80,10 @@ const IndexPage = (prop) => {
         setEbayData(await output)
 
     };
+
+    const changer = () => {
+        setrowChanger(!rowChanger)
+    }
     // Only on first load of the page.
     if (decide == true) {
         return (
@@ -97,8 +105,9 @@ const IndexPage = (prop) => {
                     search={search}
                     click={handleFormSubmit}
                 />
+                <button type="submit" className="btn btn-primary" onClick={changer} >change</button>
                 <Container>
-                    <Row>
+                    <Row className={rowChanger ? null: 'd-flex flex-wrap-reverse flex-row-reverse'} >
                             {
                                 arr.map((result) => (
                                     <RankCard
