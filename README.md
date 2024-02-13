@@ -3,6 +3,7 @@
 
 Link to Website: https://lovely-gingersnap-174138.netlify.app
 ## Description
+This application is a E-Commerce ranker website that takes in a search and finds the related items for that search from various websites (Currently only Amazon and Ebay) and gives you the best prices based on those results.
 
 ## Table of Contents
 [Installation](#installation) <br />
@@ -19,8 +20,6 @@ This application will allow the user to create a search for a product of their o
 - Make sure the data is sorted based on price. 
 
 ### These are features that are not necessary but will help the overall user experience
-- Capcha, before the first time the user searches they will be met with a capcha to ensure the user is human so that the page does not experience heavy traffic from bots.
-- A text to speech feature so that users with hard visibility will be able to say the product they wish to search without having to type. 
 
 ### There are also some key requirements we as a group must meet, these are:
 * Must use ReactJS.
@@ -33,12 +32,17 @@ This application will allow the user to create a search for a product of their o
 * Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
 ## Installation
-In order to install the project simply click the green code button and download the file as a zip. Once downloaded simply right click on the file and unzip the folder.
+In order to install the project simply click the green code button and download the file as a zip. Once downloaded simply right click on the file and unzip the folder. 
+Then do a ```npm install``` on the command line.
+and then run the website using ```npm run dev``` and click the local host using ```ctrl + left``` click to run the webpage locally.
 ## Usage
 
 
 ## Licence
 This work is using the lisence: MIT
 ## Features
+- Search bar that takes in a product query 
+- 2 APIs (Amazon and Ebay) that take in the searched query 
+- The ranker takes in both API outputs and pushes them into array of objects and sort the objects out 
 
 ## Questions
