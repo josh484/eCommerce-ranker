@@ -10,10 +10,21 @@ const speechClient = new SpeechClient();
 app.use(cors());
 
 app.post("/convert-speech", upload.single("file"), async (req, res) => {
-  if (!req.file) {
-    return res.status(400).send("No file uploaded.");
-  }
+  try {
+    const audioBytes = req.file.buffer.toString("base64");
+    const audio = { content: audioBytes };
+    const config = { languageCode: "en-US" };
+    const request = { audio, config };
 
+    const [response] = await speechClient.recognize(request);
+    const transcription = response.results
+      .map((result) => result.alternatives[0].transcript)
+      .join("\n");
+    res.send({ transcript: transcription });
+  } catch (error) {
+    console.error("Error processing speech:", error);
+    res.status(500).send("Error processing speech");
+  }
 });
 
 

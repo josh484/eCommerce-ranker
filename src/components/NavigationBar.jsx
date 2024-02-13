@@ -33,11 +33,6 @@ const NavigationBar = () => {
                 Contact
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/speech">
-                Speech
-              </a>
-            </li>
           </ul>
         </div>
       </div>
