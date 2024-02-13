@@ -31,6 +31,10 @@
     cursor: pointer;
 }
 
+.priceChange:hover{
+    cursor: pointer;
+    color: white
+}
 
 .rankText{
     font-size: 1rem !important;

@@ -105,8 +105,8 @@ const IndexPage = (prop) => {
                     search={search}
                     click={handleFormSubmit}
                 />
-                <button type="submit" className="btn btn-primary" onClick={changer} >change</button>
                 <Container>
+                <button type="submit" className="btn btn-primary" onClick={changer} >change</button>
                     <Row className={rowChanger ? null: 'd-flex flex-wrap-reverse flex-row-reverse'} >
                             {
                                 arr.map((result) => (
