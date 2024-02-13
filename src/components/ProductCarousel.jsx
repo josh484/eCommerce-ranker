@@ -4,38 +4,42 @@ import Slider from 'react-slick';
 import './ProductCarousel.css';
 
 const ProductCarousel = () => {
-    const [products, setProducts] = useState([]);
+    const [offers, setOffers] = useState([]);
 
     useEffect(() => {
-        fetchProducts();
+        fetchOffers();
     }, []);
 
-    const fetchProducts = async () => {
+    const fetchOffers = async () => {
         const options = {
             method: 'GET',
-            url: 'https://amazon-and-ebay-products-details.p.rapidapi.com/amazon/%7BproductName%7D',
+            url: 'https://price-comparison1.p.rapidapi.com/611247373064/offers',
+            params: {
+                latitude: '37.777805',
+                longitude: '-122.49493',
+                country: 'US'
+            },
             headers: {
                 'X-RapidAPI-Key': '033278cf74msh5377774c07ccfa2p1b0dbajsnf0fac9117a09',
-                'X-RapidAPI-Host': 'amazon-and-ebay-products-details.p.rapidapi.com'
+                'X-RapidAPI-Host': 'price-comparison1.p.rapidapi.com'
             }
         };
 
         try {
-            console.log('Fetching products...');
+            console.log('Fetching offers...');
             const response = await axios.request(options);
-            console.log('Products:', response.data);
-            setProducts(response.data);
+            console.log('Offers:', response.data);
+            setOffers(response.data);
         } catch (error) {
-            console.error('Error fetching products:', error);
+            console.error('Error fetching offers:', error);
         }
     };
 
-    const renderProducts = () => {
-        return products.map(product => (
-            <div key={product.id}>
-                <img src={product.image} alt={product.title} />
-                <h3>{product.title}</h3>
-                <p>{product.price}</p>
+    const renderOffers = () => {
+        return offers.map(offer => (
+            <div key={offer.id}>
+                <h3>{offer.name}</h3>
+                <p>{offer.price}</p>
             </div>
         ));
     };
@@ -52,9 +56,9 @@ const ProductCarousel = () => {
 
     return (
         <div className="product-carousel">
-            <h2>Top 10 Amazon/eBay Products</h2>
+            <h2>Top Offers</h2>
             <Slider {...settings}>
-                {renderProducts()}
+                {renderOffers()}
             </Slider>
         </div>
     );
