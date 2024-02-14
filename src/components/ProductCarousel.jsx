@@ -4,39 +4,40 @@ import Slider from 'react-slick';
 import './ProductCarousel.css';
 
 const ProductCarousel = () => {
-    const [offers, setOffers] = useState([]);
-
+    const [offers, setOffers] = useState('');
+    const [decide, setDecide] = useState(true)
     useEffect(() => {
-        fetchOffers();
+        if (offers === '') {
+            fetchOffers();
+        }
     }, []);
 
     const fetchOffers = async () => {
         const options = {
             method: 'GET',
-            url: 'https://price-comparison1.p.rapidapi.com/611247373064/offers',
+            url: 'https://amazon-scrapper-api3.p.rapidapi.com/products/B0BSXG8SGQ',
             params: {
-                latitude: '37.777805',
-                longitude: '-122.49493',
-                country: 'US'
+              api_key: '17fd230b65a63c27854fdb057d95524c'
             },
             headers: {
-                'X-RapidAPI-Key': '033278cf74msh5377774c07ccfa2p1b0dbajsnf0fac9117a09',
-                'X-RapidAPI-Host': 'price-comparison1.p.rapidapi.com'
+              'X-RapidAPI-Key': 'e836cf5203msh52715a7d81a978ap1eb4a7jsne7d2dd82308e',
+              'X-RapidAPI-Host': 'amazon-scrapper-api3.p.rapidapi.com'
             }
-        };
+          };
 
         try {
             console.log('Fetching offers...');
             const response = await axios.request(options);
             console.log('Offers:', response.data);
-            setOffers(response.data);
+            setOffers({offers, result: [response.data]});
+            setDecide(false);
         } catch (error) {
             console.error('Error fetching offers:', error);
         }
     };
 
     const renderOffers = () => {
-        return offers.map(offer => (
+        return offers.result.map(offer => (
             <div key={offer.id}>
                 <h3>{offer.name}</h3>
                 <p>{offer.price}</p>
@@ -53,15 +54,20 @@ const ProductCarousel = () => {
         autoplay: true,
         autoplaySpeed: 2000,
     };
+    if (decide == true){
+        return 
+    }
+    else{
+        return (
+            <div className="product-carousel">
+                <h2>Top Offers</h2>
+                <Slider {...settings}>
+                    {renderOffers()}
+                </Slider>
+            </div>
+        );
+    }
 
-    return (
-        <div className="product-carousel">
-            <h2>Top Offers</h2>
-            <Slider {...settings}>
-                {renderOffers()}
-            </Slider>
-        </div>
-    );
 };
 
 export default ProductCarousel;
