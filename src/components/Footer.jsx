@@ -10,7 +10,7 @@ function Footer(){
                 <ul>
                     <li><a href="https://github.com/josh484">Joshua Mendonza</a></li>
                     <li><a href="https://github.com/enx-code">Enkhbat Baatar</a></li>
-                    <li><a href="https://github.com/Moe-op">Moses</a></li>
+                    <li><a href="https://github.com/Moe-op">Moses Opiah</a></li>
                     <li><a href="https://github.com/KevinDsouza7">Victor Kevin Dsouza </a></li>
                 </ul>
                 
