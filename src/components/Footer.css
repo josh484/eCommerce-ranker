@@ -1,8 +1,10 @@
 .main-footer {
     background-color: black;
     color: white;
-    padding: 20px;
-
+    padding: 13px;
+    bottom: 0px;
+    position: absolute;
+    width: 100%;
 }
 
 .container {

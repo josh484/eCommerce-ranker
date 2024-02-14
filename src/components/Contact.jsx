@@ -5,6 +5,11 @@ function Contact() {
     email: "",
     message: "",
   });
+
+  const handleSpeechTextChange = (speechText) => {
+    setFormData({ ...formData, message: speechText });
+  };
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
