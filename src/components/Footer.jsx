@@ -1,5 +1,5 @@
 import Reac from "react";
-
+import './Footer.css'
 function Footer(){
     return(
         <div className="main-footer">
@@ -11,7 +11,7 @@ function Footer(){
                     <li><a href="https://github.com/josh484">Joshua Mendonza</a></li>
                     <li><a href="https://github.com/enx-code">Enkhbat Baatar</a></li>
                     <li><a href="https://github.com/Moe-op">Moses</a></li>
-                    <li><a href="https://github.com/KevinDsouza7">Kevin Dsouza </a></li>
+                    <li><a href="https://github.com/KevinDsouza7">Victor Kevin Dsouza </a></li>
                 </ul>
                 
             </div>
