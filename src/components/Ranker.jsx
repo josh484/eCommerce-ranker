@@ -17,7 +17,7 @@ const IndexPage = (prop) => {
     const [decide, setDecide] = useState(true)
     const searchArray = [];
     let counter = 1;
-    let [rowChanger, setrowChanger] = useState(true);
+    let [rowChanger, setrowChanger] = useState(false);
     let [loader, setLoader] = useState(false);
     const handleSearch = event => {
         setSearch(event.target.value);
@@ -74,12 +74,12 @@ const IndexPage = (prop) => {
     // On Search do
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-
+        setLoader(true);
         const output = await Ebay(search)
         const output2 = await Amazon(search)
         setAmazonData(await output2)
         setEbayData(await output)
-        setLoader(true);
+        
     };
 
     const changer = () => {
@@ -88,15 +88,18 @@ const IndexPage = (prop) => {
     // Only on first load of the page.
     if (decide === true) {
         return (
-            <div>
+            <div className>
                 <Search
                     change={handleSearch}
                     search={search}
                     click={handleFormSubmit}
                 />
-                <Spinner animation="border" role="status">
-                    <span hidden={loader} className="visually-hidden">Loading...</span>
-                </Spinner>  
+                <div className="d-flex justify-content-center">
+                { loader ? 
+                <Spinner  animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner> : null }
+                </div>
             </div>
         )
     }
@@ -109,11 +112,15 @@ const IndexPage = (prop) => {
                     search={search}
                     click={handleFormSubmit}
                 />
-                <Spinner hidden={loader} animation="border" role="status">
+                <div className="d-flex justify-content-center">
+                { loader ? 
+                <Spinner  animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>
-                </Spinner>
+                </Spinner> : null }
+                </div>
+                
                 <Container>
-                    <button type="submit" className="btn btn-primary" onClick={changer} >change</button>
+                    <button type="submit" className="btn btn-primary" onClick={changer} >Sort by {rowChanger ? 'ascending' : 'descending'}</button>
                     <Row className={rowChanger ? null : 'd-flex flex-wrap-reverse flex-row-reverse'} >
                         {
                             arr.map((result) => (
