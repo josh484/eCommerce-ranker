@@ -9,7 +9,7 @@ const ProductCarousel = () => {
 
     useEffect(() => {
         if (bestSellers === ''){
-            fetchBestSellers();
+            //fetchBestSellers();
         }
     }, []);
 
