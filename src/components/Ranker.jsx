@@ -5,7 +5,7 @@ import RankCard from './RankCard';
 import Search from './SearchBar'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-
+import Spinner from 'react-bootstrap/Spinner';
 
 
 const IndexPage = (prop) => {
@@ -18,7 +18,7 @@ const IndexPage = (prop) => {
     const searchArray = [];
     let counter = 1;
     let [rowChanger, setrowChanger] = useState(true);
-
+    let [loader, setLoader] = useState(false);
     const handleSearch = event => {
         setSearch(event.target.value);
     };
@@ -68,6 +68,7 @@ const IndexPage = (prop) => {
 
         await setArr(searchArray);
         setDecide(false)
+        setLoader(false)
     }
 
     // On Search do
@@ -78,14 +79,14 @@ const IndexPage = (prop) => {
         const output2 = await Amazon(search)
         setAmazonData(await output2)
         setEbayData(await output)
-
+        setLoader(true);
     };
 
     const changer = () => {
         setrowChanger(!rowChanger)
     }
     // Only on first load of the page.
-    if (decide == true) {
+    if (decide === true) {
         return (
             <div>
                 <Search
@@ -93,6 +94,9 @@ const IndexPage = (prop) => {
                     search={search}
                     click={handleFormSubmit}
                 />
+                <Spinner animation="border" role="status">
+                    <span hidden={loader} className="visually-hidden">Loading...</span>
+                </Spinner>  
             </div>
         )
     }
@@ -105,23 +109,26 @@ const IndexPage = (prop) => {
                     search={search}
                     click={handleFormSubmit}
                 />
+                <Spinner hidden={loader} animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
                 <Container>
-                <button type="submit" className="btn btn-primary" onClick={changer} >change</button>
-                    <Row className={rowChanger ? null: 'd-flex flex-wrap-reverse flex-row-reverse'} >
-                            {
-                                arr.map((result) => (
-                                    <RankCard
-                                        id={counter++}
-                                        key={counter}
-                                        name={result.name}
-                                        price={result.price}
-                                        image={result.image}
-                                        link={result.url}
-                                        website={result.website}
-                                    />
-                                ))
+                    <button type="submit" className="btn btn-primary" onClick={changer} >change</button>
+                    <Row className={rowChanger ? null : 'd-flex flex-wrap-reverse flex-row-reverse'} >
+                        {
+                            arr.map((result) => (
+                                <RankCard
+                                    id={counter++}
+                                    key={counter}
+                                    name={result.name}
+                                    price={result.price}
+                                    image={result.image}
+                                    link={result.url}
+                                    website={result.website}
+                                />
+                            ))
 
-                            }
+                        }
                     </Row>
                 </Container>
             </div>
