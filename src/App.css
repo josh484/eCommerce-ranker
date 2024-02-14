@@ -6,7 +6,6 @@
 .rankCard{
     height: 30vh;
     margin: 0.5vh;
-    
 }
 
 .Ebay{
@@ -56,4 +55,8 @@
 
 .contact{
     background-color: #5e7fa1;
+}
+
+#sort{
+    margin-bottom: 5vh ;
 }

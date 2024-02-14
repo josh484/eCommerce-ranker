@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 
 function RankCard(prop) {
     return (
-        <Col md={4}>
+        <Col md={4} sm={12}>
             <Card id={prop.id} className={prop.website === 'Amazon' ? 'Amazon rankCard' : 'Ebay rankCard' }>
                 <Card.Img variant="top" src={prop.image} className="rankImage"/>
                 <Card.Body className="cardBody">

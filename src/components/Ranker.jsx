@@ -17,7 +17,7 @@ const IndexPage = (prop) => {
     const [decide, setDecide] = useState(true)
     const searchArray = [];
     let counter = 1;
-    let [rowChanger, setrowChanger] = useState(false);
+    let [rowChanger, setrowChanger] = useState(true);
     let [loader, setLoader] = useState(false);
     const handleSearch = event => {
         setSearch(event.target.value);
@@ -66,7 +66,7 @@ const IndexPage = (prop) => {
 
         searchArray.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
 
-        await setArr(searchArray);
+        setArr(searchArray);
         setDecide(false)
         setLoader(false)
     }
@@ -88,7 +88,7 @@ const IndexPage = (prop) => {
     // Only on first load of the page.
     if (decide === true) {
         return (
-            <div className>
+            <div>
                 <Search
                     change={handleSearch}
                     search={search}
@@ -118,9 +118,10 @@ const IndexPage = (prop) => {
                     <span className="visually-hidden">Loading...</span>
                 </Spinner> : null }
                 </div>
-                
+                <div className="d-flex justify-content-center" id='sort'>
+                <button type="submit" className="btn btn-primary" onClick={changer} >Sort by {rowChanger ? 'ascending' : 'descending'}</button>
+                </div>
                 <Container>
-                    <button type="submit" className="btn btn-primary" onClick={changer} >Sort by {rowChanger ? 'ascending' : 'descending'}</button>
                     <Row className={rowChanger ? null : 'd-flex flex-wrap-reverse flex-row-reverse'} >
                         {
                             arr.map((result) => (

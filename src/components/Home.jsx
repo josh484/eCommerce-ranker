@@ -5,8 +5,8 @@ import SearchBar from './SearchBar';
 import  Carousel  from './ProductCarousel';
 function Home() {
     return (
-        <div className="home-container">
-            <header className="header">
+        <div className="home-container col-12">
+            <header className="header col-12">
                 <h1>Welcome to Retail Detective</h1>
                 <p className="sub-heading">Your go-to destination for smarter shopping decisions!</p>
             </header>
