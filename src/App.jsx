@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import * as bootstrap from 'bootstrap'; // Import all of Bootstrap's JS
 import './App.css'
 import Contact from './components/Contact';
-import Footer from './components/Footer';
+import Footer from './componenets/Footer';
 
 function App() {
   const [count, setCount] = useState(0)
