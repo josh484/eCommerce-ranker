@@ -22,10 +22,10 @@ function Contact() {
     });
   };
   return (
-    <div className="contact-form">
-      <div className="row footer">
-        <div className="row justify-content-center mt-5">
-          <form onSubmit={handleSubmit} className="col-10 fs-4 d-flex flex-column justify-content-center contact">
+    <div className="contact-form  col-12 d-flex justify-content-center">
+      <div className="row col-12 ">
+        <div className="row">
+          <form onSubmit={handleSubmit} className="col-12 fs-4 d-flex flex-column justify-content-center contact">
             <h2 className="mb-5">Contact Me</h2>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">
