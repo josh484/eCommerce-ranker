@@ -35,6 +35,7 @@ This application will allow the user to create a search for a product of their o
 In order to install the project simply click the green code button and download the file as a zip. Once downloaded simply right click on the file and unzip the folder. 
 Then do a ```npm install``` on the command line.
 and then run the website using ```npm run dev``` and click the local host using ```ctrl + left``` click to run the webpage locally.
+* To run back server ```node server.js``` on terminal while running the server you need to run the front-end by ```npm run dev```
 ## Usage
 
 
@@ -44,5 +45,6 @@ This work is using the lisence: MIT
 - Search bar that takes in a product query 
 - 2 APIs (Amazon and Ebay) that take in the searched query 
 - The ranker takes in both API outputs and pushes them into array of objects and sort the objects out 
+- Contact form you fill your details and on message part if you have a lot to say you can just press button and say what you want to send, if you see some mispelling on textarea you can edit and correct it.
 
 ## Questions
