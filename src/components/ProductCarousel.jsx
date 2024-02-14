@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// import Slider from 'react-slick';
+import Slider from 'react-slick';
 import './ProductCarousel.css';
 import Button from 'react-bootstrap/Button';
 const ProductCarousel = () => {
@@ -33,7 +33,6 @@ const ProductCarousel = () => {
 
         try {
             const response = await axios.request(options);
-            console.log('Best Sellers:', response.data);
             setBestSellers(await response.data);
             setDecide(false)
         } catch (error) {
@@ -42,7 +41,6 @@ const ProductCarousel = () => {
     };
 
     const renderBestSellers = () => {
-        console.log([bestSellers.data.best_sellers][0])
         return [bestSellers.data.best_sellers][0].map(seller => (
             <div key={seller.rank} className='d-flex flex-column justify-content-center'>
                 <h3 className='text'>{seller.product_title}</h3>
@@ -54,12 +52,17 @@ const ProductCarousel = () => {
     };
 
     const settings = {
-        dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3
-    };
+        className: "center",
+        infinite: true,
+        centerPadding: "60px",
+        slidesToShow: 5,
+        swipeToSlide: true,
+        afterChange: function(index) {
+          console.log(
+            `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+          );
+        }
+      };
     if (decide == true) {
         return
     }
