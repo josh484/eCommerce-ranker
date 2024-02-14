@@ -9,7 +9,7 @@ const ProductCarousel = () => {
 
     useEffect(() => {
         if (bestSellers === ''){
-            fetchBestSellers();
+        //    fetchBestSellers();
         }
     }, []);
 
@@ -41,7 +41,7 @@ const ProductCarousel = () => {
     };
 
     const renderBestSellers = () => {
-        console.log([bestSellers.data.best_sellers][0])
+        console.log([bestSellers.data.best_sellers])
         return [bestSellers.data.best_sellers][0].map(seller => (
             <div key={seller.rank}>
                 <h3>{seller.product_title}</h3>
