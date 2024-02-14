@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./NavigationBar.css";
 
 const NavigationBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark customNav">
       <div className="container">
         <a className="navbar-brand" href="/">
-          E-Commerce Ranker
+          Retail Detective
         </a>
         <button
           className="navbar-toggler"
@@ -24,14 +26,14 @@ const NavigationBar = () => {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <Link className="nav-link" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/contact">
+              <Link className="nav-link" to="/contact">
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
