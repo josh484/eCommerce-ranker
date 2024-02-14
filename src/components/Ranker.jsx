@@ -39,7 +39,7 @@ const IndexPage = (prop) => {
             if (result.price != 0 && result.url !== 'https://ebay.com/itm/123456') {
                 searchArray.push(
                     {
-                        name: result.title,
+                        name: search,
                         price: result.price.value,
                         image: result.thumbnail,
                         url: result.url,
@@ -121,7 +121,7 @@ const IndexPage = (prop) => {
                 <div className="d-flex justify-content-center" id='sort'>
                 <button type="submit" className="btn btn-primary" onClick={changer} >Sort by {rowChanger ? 'ascending' : 'descending'}</button>
                 </div>
-                <Container>
+                <Container className='d-flex justify-content-center'>
                     <Row className={rowChanger ? null : 'd-flex flex-wrap-reverse flex-row-reverse'} >
                         {
                             arr.map((result) => (
