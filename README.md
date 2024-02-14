@@ -37,14 +37,17 @@ Then do a ```npm install``` on the command line.
 and then run the website using ```npm run dev``` and click the local host using ```ctrl + left``` click to run the webpage locally.
 * To run back server ```node server.js``` on terminal while running the server you need to run the front-end by ```npm run dev```
 ## Usage
-
+Search products and compare prices from Amazon and Ebay.
 
 ## Licence
 This work is using the lisence: MIT
 ## Features
 - Search bar that takes in a product query 
-- 2 APIs (Amazon and Ebay) that take in the searched query 
+- 3 APIs (Amazon and Ebay) that take in the searched query 
 - The ranker takes in both API outputs and pushes them into array of objects and sort the objects out 
 - Contact form you fill your details and on message part if you have a lot to say you can just press button and say what you want to send, if you see some mispelling on textarea you can edit and correct it.
-
+Used Google Cloud Speech-to-Text API.
+    * Express.js
+    * dotenv
+    * cors
 ## Questions
