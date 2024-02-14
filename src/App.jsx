@@ -7,8 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import * as bootstrap from 'bootstrap'; // Import all of Bootstrap's JS
 import './App.css'
 import Contact from './components/Contact';
-
-
+import Footer from './components/Footer';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,6 +16,7 @@ function App() {
     <>
       <Router>
       <NavigationBar />
+
         <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -24,6 +24,8 @@ function App() {
         </Routes>
         </div>
       </Router>
+      <Footer/>
+      
     </>
   )
 }
