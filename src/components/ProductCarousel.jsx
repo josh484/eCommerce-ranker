@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from 'react-slick';
+// import Slider from 'react-slick';
 import './ProductCarousel.css';
 import Button from 'react-bootstrap/Button';
 const ProductCarousel = () => {
@@ -26,7 +26,7 @@ const ProductCarousel = () => {
                 country: 'US'
             },
             headers: {
-                'X-RapidAPI-Key': 'a7e83f22d7msh9e6c7b9dc2bc60ap141738jsnd7d05c2b6924',
+                'X-RapidAPI-Key': '72bec0657cmshb87423b02d82913p13ed4fjsnfe06bc62a79b',
                 'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
             }
         };
