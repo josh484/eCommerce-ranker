@@ -1,0 +1,36 @@
+.main-footer {
+    background-color: black;
+    color: white;
+    padding: 13px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.col-ms-3,
+.col-sm-6 {
+    flex: 1;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}
+
+li {
+    margin-right: 20px;
+}
+
+p {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    background-color:black;
+    padding: 5px 0;
+    text-align: center;
+}

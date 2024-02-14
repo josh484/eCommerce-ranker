@@ -1,0 +1,59 @@
+.rankImage{
+    height: 50%;
+    width: 100%;
+}
+
+.rankCard{
+    height: 30vh;
+    margin: 0.5vh;
+    
+}
+
+.Ebay{
+    --bs-card-bg: #E53238
+}
+
+.Amazon{
+    --bs-card-bg: #ff9900;
+}
+
+.Ebay:hover{
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+    box-shadow: 5px 5px #0064D3;
+    cursor: pointer;
+}
+
+.Amazon:hover{
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+    box-shadow: 5px 5px #000000;
+    cursor: pointer;
+}
+
+.priceChange:hover{
+    cursor: pointer;
+    color: white
+}
+
+.rankText{
+    font-size: 1rem !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+}
+
+.rankButton{
+    --bs-btn-bg: #232f3e !important;
+    --bs-btn-border-color:#232f3e !important;
+    --bs-btn-hover-color:white !important;
+    --bs-btn-hover-bg:#3700B3 !important;
+    --bs-btn-hover-border-color:#3700B3 !important;
+    --bs-btn-active-border-color: #3700B3 !important;
+    --bs-btn-active-bg: #3700B3 !important;
+}
+
+.contact{
+    background-color: #5e7fa1;
+}

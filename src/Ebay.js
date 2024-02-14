@@ -1,17 +1,18 @@
 import axios from "axios";
 
-const Amazon = async (search) => {
+const Ebay = async (search) => {
 
   const options = {
     method: 'GET',
-    url: 'https://amazon-merchant-data.p.rapidapi.com/search-products',
+    url: 'https://ebay32.p.rapidapi.com/search/' + search,
     params: {
-      term: search,
-      country: 'uk'
+      page: '1',
+      country: 'United Kingdom',
+      country_code: 'uk'
     },
     headers: {
       'X-RapidAPI-Key': 'a4a9148c55mshd51a0247b343d9ep18b62ejsn9b26d87bdecb',
-      'X-RapidAPI-Host': 'amazon-merchant-data.p.rapidapi.com'
+      'X-RapidAPI-Host': 'ebay32.p.rapidapi.com'
     }
   };
 
@@ -24,4 +25,4 @@ const Amazon = async (search) => {
 
 }
 
-export default Amazon
+export default Ebay
