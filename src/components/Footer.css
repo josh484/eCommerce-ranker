@@ -24,13 +24,13 @@ li {
     margin-right: 20px;
 }
 
-a {
+p {
     color: white;
     text-decoration: none;
 }
 
 .footer-bottom {
-    background-color: rgb(255, 255, 255);
-    padding: 15px 0;
+    background-color:black;
+    padding: 5px 0;
     text-align: center;
 }
