@@ -7,12 +7,12 @@ function Home() {
     return (
         <div className="home-container">
             <header className="header">
-                <h1>Welcome to E-commerce Ranker</h1>
+                <h1>Welcome to Retail Detective</h1>
                 <p className="sub-heading">Your go-to destination for smarter shopping decisions!</p>
             </header>
             <Carousel></Carousel>
             <section className="main-content">
-                <p>At E-commerce Ranker, we understand the challenges consumers face when searching for the best deals online. That's why we've developed a powerful application that empowers users like you to take control of your shopping experience.</p>
+                <p>At Retail Detective, we understand the challenges consumers face when searching for the best deals online. That's why we've developed a powerful application that empowers users like you to take control of your shopping experience.</p>
                 <Ranker />
                 
             </section>
