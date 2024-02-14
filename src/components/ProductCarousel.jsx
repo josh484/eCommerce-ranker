@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import './ProductCarousel.css';
-
+import Button from 'react-bootstrap/Button';
 const ProductCarousel = () => {
     const [bestSellers, setBestSellers] = useState('');
     const [decide, setDecide] = useState(true)
 
     useEffect(() => {
-        if (bestSellers === ''){
-            //fetchBestSellers();
+        if (bestSellers === '') {
+             fetchBestSellers();
         }
     }, []);
 
@@ -27,10 +29,9 @@ const ProductCarousel = () => {
                 'X-RapidAPI-Key': 'a7e83f22d7msh9e6c7b9dc2bc60ap141738jsnd7d05c2b6924',
                 'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
             }
-          };
+        };
 
         try {
-            console.log('Fetching best sellers...');
             const response = await axios.request(options);
             console.log('Best Sellers:', response.data);
             setBestSellers(await response.data);
@@ -43,35 +44,35 @@ const ProductCarousel = () => {
     const renderBestSellers = () => {
         console.log([bestSellers.data.best_sellers][0])
         return [bestSellers.data.best_sellers][0].map(seller => (
-            <div key={seller.rank}>
-                <h3>{seller.product_title}</h3>
+            <div key={seller.rank} className='d-flex flex-column justify-content-center'>
+                <h3 className='text'>{seller.product_title}</h3>
                 <p>{seller.product_price}</p>
+                <img src={seller.product_photo}></img>
+                <Button variant="primary" href={seller.product_url} className="rankButton">link</Button>
             </div>
         ));
     };
 
     const settings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         speed: 500,
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
+        slidesToShow: 3,
+        slidesToScroll: 3
     };
-    if (decide == true){
-        return 
+    if (decide == true) {
+        return
     }
-    else{
-    return (
-        <div className="product-carousel">
-            <h2>Top Best Sellers</h2>
+    else {
+        return (
+            <div className="product-carousel">
+                <h2>Top Best Sellers</h2>
                 <Slider {...settings}>
-                    {renderBestSellers()}
+                {renderBestSellers()}
                 </Slider>
-        </div>
-    );
-}
+            </div>
+        );
+    }
 };
 
 export default ProductCarousel;
