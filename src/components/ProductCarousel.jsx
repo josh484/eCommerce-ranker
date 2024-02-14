@@ -4,43 +4,48 @@ import Slider from 'react-slick';
 import './ProductCarousel.css';
 
 const ProductCarousel = () => {
-    const [offers, setOffers] = useState('');
+    const [bestSellers, setBestSellers] = useState('');
     const [decide, setDecide] = useState(true)
+
     useEffect(() => {
-        if (offers === '') {
-            fetchOffers();
+        if (bestSellers === ''){
+            fetchBestSellers();
         }
     }, []);
 
-    const fetchOffers = async () => {
+    const fetchBestSellers = async () => {
         const options = {
             method: 'GET',
-            url: 'https://amazon-scrapper-api3.p.rapidapi.com/products/B0BSXG8SGQ',
+            url: 'https://real-time-amazon-data.p.rapidapi.com/best-sellers',
             params: {
-              api_key: '17fd230b65a63c27854fdb057d95524c'
+                category: 'software',
+                type: 'BEST_SELLERS',
+                page: '1',
+                country: 'US'
             },
             headers: {
-              'X-RapidAPI-Key': 'e836cf5203msh52715a7d81a978ap1eb4a7jsne7d2dd82308e',
-              'X-RapidAPI-Host': 'amazon-scrapper-api3.p.rapidapi.com'
+                'X-RapidAPI-Key': 'a7e83f22d7msh9e6c7b9dc2bc60ap141738jsnd7d05c2b6924',
+                'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
             }
           };
 
         try {
-            console.log('Fetching offers...');
+            console.log('Fetching best sellers...');
             const response = await axios.request(options);
-            console.log('Offers:', response.data);
-            setOffers({offers, result: [response.data]});
-            setDecide(false);
+            console.log('Best Sellers:', response.data);
+            setBestSellers(await response.data);
+            setDecide(false)
         } catch (error) {
-            console.error('Error fetching offers:', error);
+            console.error('Error fetching best sellers:', error);
         }
     };
 
-    const renderOffers = () => {
-        return offers.result.map(offer => (
-            <div key={offer.id}>
-                <h3>{offer.name}</h3>
-                <p>{offer.price}</p>
+    const renderBestSellers = () => {
+        console.log([bestSellers.data.best_sellers][0])
+        return [bestSellers.data.best_sellers][0].map(seller => (
+            <div key={seller.rank}>
+                <h3>{seller.product_title}</h3>
+                <p>{seller.product_price}</p>
             </div>
         ));
     };
@@ -58,16 +63,15 @@ const ProductCarousel = () => {
         return 
     }
     else{
-        return (
-            <div className="product-carousel">
-                <h2>Top Offers</h2>
+    return (
+        <div className="product-carousel">
+            <h2>Top Best Sellers</h2>
                 <Slider {...settings}>
-                    {renderOffers()}
+                    {renderBestSellers()}
                 </Slider>
-            </div>
-        );
-    }
-
+        </div>
+    );
+}
 };
 
 export default ProductCarousel;
