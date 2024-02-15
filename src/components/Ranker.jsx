@@ -35,7 +35,7 @@ const IndexPage = (prop) => {
 
     // put both API data into an array as an object with same details
     const handleData = async () => {
-        await ebayData.products.map((result) => {
+        await ebayData.products.slice(0, 9).map((result) => {
             if (result.price != 0 && result.url !== 'https://ebay.com/itm/123456') {
                 searchArray.push(
                     {

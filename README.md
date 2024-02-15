@@ -1,6 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # eCommerce Ranker
-
 Link to Website: https://lovely-gingersnap-174138.netlify.app
 ## Description
 This application is a E-Commerce ranker website that takes in a search and finds the related items for that search from various websites (Currently only Amazon and Ebay) and gives you the best prices based on those results.
@@ -18,9 +17,7 @@ This application will allow the user to create a search for a product of their o
 - Take the data from the APIs and then put them into one useState
 - Map the data using a card component to the page.
 - Make sure the data is sorted based on price. 
-
-### These are features that are not necessary but will help the overall user experience
-
+- Carousel for todays best sellers.
 ### There are also some key requirements we as a group must meet, these are:
 * Must use ReactJS.
 * Must use Node.
@@ -44,10 +41,12 @@ This work is using the lisence: MIT
 ## Features
 - Search bar that takes in a product query 
 - 3 APIs (Amazon and Ebay) that take in the searched query 
-- The ranker takes in both API outputs and pushes them into array of objects and sort the objects out 
+- The ranker takes in both API outputs and pushes them into array of objects and sort the objects based on the price.
+- a button to change the order of cards by price, least to most, most to least. 
+- a contact page.
+- a Carousel that uses and API for data and uses the npm library called react-slick to import a carousel with many different types of functions, we chose to use a carousel that outputs three images items per slide.
 - Contact form you fill your details and on message part if you have a lot to say you can just press button and say what you want to send, if you see some mispelling on textarea you can edit and correct it.
 Used Google Cloud Speech-to-Text API.
     * Express.js
     * dotenv
     * cors
-## Questions
