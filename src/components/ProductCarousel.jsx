@@ -11,7 +11,7 @@ const ProductCarousel = () => {
 
     useEffect(() => {
         if (bestSellers === '') {
-             fetchBestSellers();
+            fetchBestSellers();
         }
     }, []);
 
@@ -41,14 +41,17 @@ const ProductCarousel = () => {
     };
 
     const renderBestSellers = () => {
-        return [bestSellers.data.best_sellers][0].map(seller => (
-            <div key={seller.rank} className='d-flex flex-column justify-content-center'>
-                <h3 className='text'>{seller.product_title}</h3>
-                <p>{seller.product_price}</p>
-                <img src={seller.product_photo}></img>
-                <Button variant="primary" href={seller.product_url} className="rankButton">link</Button>
-            </div>
-        ));
+        return [bestSellers.data.best_sellers][0].map(seller => {
+            if (seller.product_price !== null) {
+                return <div key={seller.rank} className='d-flex flex-column justify-content-center cItem'>
+                    <h3 className='text'>{seller.product_title}</h3>
+                    <p>{seller.product_price}</p>
+                    <img src={seller.product_photo}></img>
+                    <Button variant="primary" href={seller.product_url} className="rankButton">link</Button>
+                </div>
+            }
+
+        });
     };
 
     const settings = {
@@ -57,7 +60,7 @@ const ProductCarousel = () => {
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 3
-      };
+    };
     if (decide == true) {
         return
     }
@@ -66,7 +69,7 @@ const ProductCarousel = () => {
             <div className="product-carousel col-12">
                 <h2>Top Best Sellers</h2>
                 <Slider {...settings}>
-                {renderBestSellers()}
+                    {renderBestSellers()}
                 </Slider>
             </div>
         );

@@ -30,7 +30,7 @@ function Contact() {
     <div className="contact-form  col-12 d-flex justify-content-center">
       <div className="row col-12 ">
         <div className="row">
-          <form onSubmit={handleSubmit} className="col-12 fs-4 d-flex flex-column justify-content-center contact">
+          <form action='https://getform.io/f/473a6617-2be3-4c30-959e-0184c9b15914' method='POST' className="col-12 fs-4 d-flex flex-column justify-content-center contact">
             <h2 className="mb-5">Contact Me</h2>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">
@@ -73,7 +73,7 @@ function Contact() {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-primary fs-4">
+            <button type="submit" className="btn btn-primary fs-4 contactBtn">
               Submit
             </button>
           </form>
