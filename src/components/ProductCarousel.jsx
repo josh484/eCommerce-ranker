@@ -23,10 +23,10 @@ const ProductCarousel = () => {
                 category: 'software',
                 type: 'BEST_SELLERS',
                 page: '1',
-                country: 'US'
+                country: 'GB'
             },
             headers: {
-                'X-RapidAPI-Key': '72bec0657cmshb87423b02d82913p13ed4fjsnfe06bc62a79b',
+                'X-RapidAPI-Key': 'd595798546mshe178722e94804abp1a324bjsn18d5483758be',
                 'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
             }
         };
