@@ -1,4 +1,5 @@
 .rankImage{
+    object-fit:cover;
     height: 50%;
     width: 100%;
 }

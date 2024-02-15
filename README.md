@@ -34,8 +34,10 @@ Then do a ```npm install``` on the command line.
 and then run the website using ```npm run dev``` and click the local host using ```ctrl + left``` click to run the webpage locally.
 * To run back server ```node server.js``` on terminal while running the server you need to run the front-end by ```npm run dev```
 ## Usage
-Search products and compare prices from Amazon and Ebay.
-
+### Once on the website you will be met with this page:
+![Front Page](./public/home.png) 
+### use the search bar in the middle of the page to get best deals based on your search: 
+![Front Page](./public/search.png)
 ## Licence
 This work is using the lisence: MIT
 ## Features
